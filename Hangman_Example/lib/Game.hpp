@@ -20,13 +20,18 @@ class Game {
 
     bool isGameOver();
     bool wantToPlayAgain();
-
+    std::string generateRandomWord();
     static std::string getPlayerAnswer(std::string prompt_msg, std::string error_msg);
 
   private:
     SecretPhrase *m_secretPhrase;
     Hangman *m_hangman;
-
+    std::string  secretWord;
+    int playerFirstScore;
+    int playerSecondScore;
+    bool turn;
+    void displayWinner();
+    void displayLoser();
 };
 
 #endif
