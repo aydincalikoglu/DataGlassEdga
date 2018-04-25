@@ -39,10 +39,12 @@ void Game::play(){
   	if(turn){
   		cout << "Player 2 turn :"<<endl;
   		turn = false;
-  	}
+  	   writeFile();
+    }
   	else{
   		cout << "Player 1 turn :" <<endl;
   		turn = true;
+      writeFile();
   	}
     this -> parsePlayerGuess(this -> getPlayerGuess());
     this -> updateBoard();
@@ -57,6 +59,7 @@ void Game::setPlayerSecretPhrase(){
   error_msg  = "Input error! Please try again.";
   response   = secretWord;
   m_secretPhrase -> setSecret(response);
+
 }
 
 void Game::displayResults() {
@@ -112,6 +115,7 @@ char Game::getPlayerGuess() {
   prompt_msg = "Please input your guess: ";
   error_msg  = "Input error! Please try again.";
   response   = Game::getPlayerAnswer(prompt_msg, error_msg);
+  lastChar = response[0];
   return response[0];
 }
 
@@ -195,5 +199,23 @@ void Game::displayWinner(){
 }
 void Game::displayLoser(){
   cout << "You lose the game and your score is "<< playerSecondScore<<" try again !"<<endl;
+}
+
+void Game::writeFile(){
+
+  std::ofstream out("deneme/deneme.txt");
+  out << m_secretPhrase->getHidden()<<endl;
+
+  if(turn)
+    out<<"2"<<endl;
+  else
+    out<<"1"<<endl;
+
+  out<<lastChar<<endl;
+
+
+  out.close();
+
+
 }
 
