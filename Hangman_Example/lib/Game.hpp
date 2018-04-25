@@ -32,6 +32,9 @@ class Game {
     bool turn;
     void displayWinner();
     void displayLoser();
+    void writeFile();
+    char lastChar;
 };
 
 #endif
+
