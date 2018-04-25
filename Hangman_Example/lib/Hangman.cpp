@@ -13,6 +13,10 @@ void Hangman::updateStatus(int newValue) {
   m_status = newValue;
 }
 
+void Hangman::resetStatus(){
+  m_status=6;
+}
+
 string Hangman::draw(int status) {
 
   string hangman_draw;
