@@ -11,6 +11,7 @@ class Hangman {
     int getStatus();
     void updateStatus(int newValue);
     std::string draw(int status);
+    void resetStatus();
 
   private:
     int m_status;
