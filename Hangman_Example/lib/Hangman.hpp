@@ -1,21 +1,39 @@
-#ifndef DEF_HANGMAN
-#define DEF_HANGMAN
+#ifndef DEF_GAME
+#define DEF_GAME
 
 #include <iostream>
 #include <string>
+#include "SecretPhrase.hpp"
+#include "Hangman.hpp"
 
-class Hangman {
+class Game {
   public:
-    Hangman();
-    ~Hangman();
-    int getStatus();
-    void updateStatus(int newValue);
-    std::string draw(int status);
-    void resetStatus();
+    Game();
+    ~Game();
+    void play();
+    void updateBoard();
+    void parsePlayerGuess(char guess);
+    void displayResults();
+    void setPlayerSecretPhrase();
+
+    char getPlayerGuess();
+
+    bool isGameOver();
+    bool wantToPlayAgain();
+    std::string generateRandomWord();
+    static std::string getPlayerAnswer(std::string prompt_msg, std::string error_msg);
 
   private:
-    int m_status;
-
+    SecretPhrase *m_secretPhrase;
+    Hangman *m_hangman;
+    std::string  secretWord;
+    int playerFirstScore;
+    int playerSecondScore;
+    bool turn;
+    void displayWinner();
+    void displayLoser();
+    void writeFile();
+    char lastChar;
 };
 
 #endif
