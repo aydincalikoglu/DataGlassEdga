@@ -1,3 +1,3 @@
 # DataGlassEdga
 
-aydincalikoglu.com/edga/
+www.aydincalikoglu.com/edga/
